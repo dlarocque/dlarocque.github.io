@@ -1,0 +1,25 @@
+body {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 900px;
+	padding-left: 1em;
+	padding-right: 2em;
+	padding-bottom: 2em;
+}
+
+.menu a {
+  text-decoration: none;
+  padding: 5px;
+}
+
+.menu {
+	padding: 0;
+}
+
+.menu li {
+	display: inline-block;
+}
+
+hr {
+	border-style: double;
+}
