@@ -1,0 +1,25 @@
+Git rebase
+- Used when we want to re-write the history of a branch to condense commits into one
+nice clean commit to make the history cleaner
+- We can delete, rename, modify, squash commits
+- Rebasing is the process of moving a sequence of commits to another base commit
+- Two modes, manual and interactive
+- Rebased commits get a new commit ID
+- Rebased commits are 'replayed' on top of the new branch
+
+Manual Rebase
+Move the commits of one branch to the head of another branch, as if the new
+commits were written based off of the head of another branch.
+
+Interactive Rebase
+
+commands
+$ git rebase -i
+
+
+How to abandon a rebase
+
+
+Additional Resources
+https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase
+https://git-scm.com/docs/git-rebase

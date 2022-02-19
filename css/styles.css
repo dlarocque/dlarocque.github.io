@@ -20,6 +20,15 @@ body {
 	display: inline-block;
 }
 
+.dir {
+	display: inline-block;
+	list-style-type: none;
+}
+
+.dir a {
+	text-decoration: none;
+}
+
 hr {
 	border-style: double;
 }
