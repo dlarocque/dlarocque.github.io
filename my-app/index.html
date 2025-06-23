@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Firebase Messaging Custom Service Worker Path</title>
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/11.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.8.1/firebase-messaging-compat.js"></script>
+    <script>
+      const app = firebase.initializeApp({
+        apiKey: 'AIzaSyDeTmTgLPYPjYDhs8GF4I7GOpY5g_8eJSg',
+        authDomain: 'dlarocque-proj.firebaseapp.com',
+        databaseURL: 'https://dlarocque-proj-default-rtdb.firebaseio.com',
+        projectId: 'dlarocque-proj',
+        storageBucket: 'dlarocque-proj.appspot.com',
+        messagingSenderId: '492374920379',
+        appId: '1:492374920379:web:635dc5b2649f2d451dad9e',
+      });
+
+      const messaging = firebase.messaging();
+
+      function subscribe() {
+        if ('serviceWorker' in navigator) {
+          Notification.requestPermission().then(async (permission) => {
+            if (permission === 'granted') {
+              console.log('Notification permission granted');
+            } else {
+              return;
+            }
+
+            console.log('Registering service worker');
+            navigator.serviceWorker.register('./sw.js')
+              .then((registration) => {
+                console.log('Getting messaging token with custom registration:', registration);
+                messaging.getToken(
+                  {
+                    vapidKey: 'BE3Wb1tfBUkghp07ndFuAM9dFhXdPTtTIMJGGTSkp89-w0AcvqvAT6xKe-KHw8VEEA6KZLiF1YYolWGpV4WT6pE',
+                    serviceWorkerRegistration: registration
+                  }
+                )
+                .then((currentToken) => {
+                  console.log('currentToken:', currentToken);
+                })
+                .catch((err) => {
+                  console.error('An error occured while retrieving token:', err);
+                });
+              })
+          });
+        }
+      }
+    </script>
+    <button onclick="subscribe()">Request Permissions and Get Token</button>
+</body>
+</html>
